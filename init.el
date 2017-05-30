@@ -4,14 +4,13 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize)
 
-
-;; Use package - how does this work??
-;;(unless (package-installed-p 'use-package)
-;;  (package-refresh-contents)
-;;  (package-install 'use-package))
-
-;;(eval-when-compile
-;;  (require 'use-package))
+;; packages
+(use-package neotree :ensure t)
+(use-package drag-stuff :ensure t)
+(use-package yasnippet :ensure t)
+(use-package js2-mode :ensure t)
+(use-package elpy :ensure t)
+(use-package monokai-theme :ensure t)
 
 ;; Cua Mode - for ctrl+c/ctrl+v windows style.
 (cua-mode t)
@@ -40,34 +39,33 @@
 ;; js2-mode (javascript editing)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
+;; elpy
+(elpy-enable)
+
 ;; Do not word wrap by default
 (setq-default truncate-lines 1)
 
 ;; Theme
- ;;(if (nil)
- ;;(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;; '(ansi-color-names-vector
-  ;;  ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- ;; '(custom-enabled-themes (quote (fogus)))
- ;; '(custom-safe-themes
- ;;   (quote
- ;;    ("3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" default))))
- ;;(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;; )
- ;;)
+(load-theme 'monokai t)
 
-;; Key bindings
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Key Bindings                                                              ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Undo is Ctrl+Z
 (global-unset-key "\C-z")
 (global-set-key "\C-z" 'undo)
+;; Search is Ctrl+F
+(global-set-key (kbd "C-f") 'isearch-forward)
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Arguable defaults                                                         ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Search is case insensitive by default. Press M-c to toggle
+(setq case-fold-search nil)
+(setq-default indent-tabs-mode nil) ; do not mix tabs and spaces
 
 ;;
 (setq x-stretch-cursor t) ;makes cursor lager when over tabs
@@ -77,7 +75,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(global-linum-mode t))
+ '(case-fold-search t)
+ '(global-linum-mode t)
+ '(indent-tabs-mode t))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

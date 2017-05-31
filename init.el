@@ -11,6 +11,13 @@
 (use-package js2-mode :ensure t)
 (use-package elpy :ensure t)
 (use-package monokai-theme :ensure t)
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "pandoc"))
 
 ;; Cua Mode - for ctrl+c/ctrl+v windows style.
 (cua-mode t)
@@ -40,7 +47,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;; elpy
-(elpy-enable)
+; (elpy-enable)
 
 ;; Do not word wrap by default
 (setq-default truncate-lines 1)

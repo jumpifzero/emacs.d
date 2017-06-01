@@ -1,3 +1,11 @@
+;; TODO:
+;; The first time you load this, use-package does not exist.
+;; Duplicate line functionality
+;; Cut current line functionality regardless of cursor position
+;; magit-ediff to resolve merge conflicts
+;; ctrl+scroll should resize font
+
+
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -18,6 +26,7 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
+(use-package multiple-cursors :ensure t)
 
 ;; Cua Mode - for ctrl+c/ctrl+v windows style.
 (cua-mode t)
@@ -65,7 +74,8 @@
 ;; Search is Ctrl+F
 (global-set-key (kbd "C-f") 'isearch-forward)
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
-
+;; multiple-cursors. Select like this with Alt+f3
+(global-set-key (kbd "M-<f3>") 'mc/mark-all-like-this)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Arguable defaults                                                         ;;
@@ -84,7 +94,7 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(global-linum-mode t)
- '(indent-tabs-mode t))
+ '(indent-tabs-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

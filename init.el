@@ -4,7 +4,7 @@
 ;; Cut current line functionality regardless of cursor position
 ;; magit-ediff to resolve merge conflicts
 ;; ctrl+scroll should resize font
-
+;; https://github.com/ScottyB/ac-js2 ??
 
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))

@@ -27,6 +27,20 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
 (use-package multiple-cursors :ensure t)
+(use-package pabbrev :ensure t)
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+(use-package web-mode :ensure t)
+(use-package json-mode :ensure t)
+(use-package exec-path-from-shell :ensure t)
+;(use-package simple-httpd :ensure t)
+;(use-package skewer-mode :ensure t)
+;(add-hook 'js2-mode-hook 'skewer-mode)
+;(use-package auto-complete :ensure t)
+;(ac-config-default)
+;(use-package ac-js2 :ensure t)
+;(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 ;; Cua Mode - for ctrl+c/ctrl+v windows style.
 (cua-mode t)
@@ -52,18 +66,20 @@
         ))
 (yas-global-mode t)
 
+;; Web Mode for HTML
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; JAVASCRIPT
 ;; js2-mode (javascript editing)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;(add-to-list 'auto-mode-alist '("\\.js\\'" . pabbrev-mode))
 
-;; elpy
-; (elpy-enable)
 
 ;; Do not word wrap by default
 (setq-default truncate-lines 1)
 
 ;; Theme
 (load-theme 'monokai t)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions (move them)                                                     ;;
@@ -94,6 +110,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Arguable defaults                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Enable pabbrev everywhere
+(pabbrev-mode)
 ;; Search is case insensitive by default. Press M-c to toggle
 (setq case-fold-search nil)
 (setq-default indent-tabs-mode nil) ; do not mix tabs and spaces
@@ -111,7 +129,8 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(global-linum-mode t)
- '(indent-tabs-mode nil))
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

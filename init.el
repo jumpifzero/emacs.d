@@ -110,8 +110,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Arguable defaults                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Enable pabbrev everywhere
+;; auto revert mode - Refreshes files and non files if they changed on disk
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
+
+;; Enable Predictive Abbreviation everywhere FIXME-This isnt working
 (pabbrev-mode)
+
 ;; Search is case insensitive by default. Press M-c to toggle
 (setq case-fold-search nil)
 (setq-default indent-tabs-mode nil) ; do not mix tabs and spaces

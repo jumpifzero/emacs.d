@@ -71,7 +71,7 @@
 
 ;; JAVASCRIPT
 ;; js2-mode (javascript editing)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;(add-to-list 'auto-mode-alist '("\\.js\\'" . pabbrev-mode))
 
 
@@ -126,7 +126,7 @@
 (setq-default cursor-type 'bar)
 ;; Tab width is 6. - You can see they are tabs but not that
 ;; indented.
-(setq-default tab-width 6)
+(setq-default tab-width 4)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -134,8 +134,9 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(global-linum-mode t)
- '(indent-tabs-mode nil)
- '(inhibit-startup-screen t))
+ '(indent-tabs-mode t)
+ '(inhibit-startup-screen t)
+ '(js2-bounce-indent-p t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -143,3 +144,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;; Trying to get tabs to work ffs
+;; https://stackoverflow.com/questions/344966/improved-tab-in-emacs
+;(defvar just-tab-keymap (make-sparse-keymap) "Keymap for just-tab-mode")
+;(define-minor-mode just-tab-mode
+;  "Just want the TAB key to be a TAB"
+;  :global t :lighter " TAB" :init-value 0 :keymap just-tab-keymap
+;  (define-key just-tab-keymap (kbd "TAB") 'indent-for-tab-command))

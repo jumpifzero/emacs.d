@@ -153,3 +153,9 @@
 ;  "Just want the TAB key to be a TAB"
 ;  :global t :lighter " TAB" :init-value 0 :keymap just-tab-keymap
 ;  (define-key just-tab-keymap (kbd "TAB") 'indent-for-tab-command))
+
+
+
+								
+; XML PRETTY PRINT
+; 'm not sure how sgml-mode might have changed over time. Today, I invoked C-x C-f foo.xml, M-x sgml-mode, then M-x sgml-pretty-print and my xml file got pretty printed. (Well, emacs hanged for twenty seconds or more before completing. It was a one line file before the pretty print and 720 lines after.) – daveloyall Aug 10 '15 at 18:14

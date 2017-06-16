@@ -1,10 +1,11 @@
 ;; TODO:
+;;
 ;; The first time you load this, use-package does not exist.
-;; Duplicate line functionality
-;; Cut current line functionality regardless of cursor position
 ;; magit-ediff to resolve merge conflicts
 ;; ctrl+scroll should resize font
 ;; https://github.com/ScottyB/ac-js2 ??
+
+(load "~/.emacs.d/functions.el")
 
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
@@ -12,8 +13,9 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize)
 
-;; packages
+;;
 (use-package neotree :ensure t)
+;; (use-package tabbar :ensure t)
 (use-package drag-stuff :ensure t)
 (use-package yasnippet :ensure t)
 (use-package js2-mode :ensure t)
@@ -52,6 +54,34 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+;; Ido config
+(require 'ido)
+(setq ido-enable-tramp-completion t)
+(ido-mode 1)
+(ido-everywhere 1)
+(setq ido-enable-flex-matching t)
+(setq ido-create-new-buffer 'always)
+(setq ido-enable-last-directory-history nil)
+(setq ido-confirm-unique-completion nil) ;; wait for RET, even for unique?
+(setq ido-show-dot-for-dired t) ;; put . as first item
+(setq ido-use-filename-at-point t) ;; prefer filenames near point
+
+
+
+;; tabbar
+;; Use only two groups for tabs - emacs and user
+(defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
+  "Returns the name of the tab group names the current buffer belongs to.
+ There are two groups: Emacs buffers (those whose name starts with '*', plus
+ dired buffers), and the rest.  This works at least with Emacs v24.2 using
+ ;TODO: abbar.el v1.7."
+  ( list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+               ((eq major-mode 'dired-mode) "emacs")
+               (t "user"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+
+
+
 ;; Grab-stuff
 (require 'drag-stuff)
 (drag-stuff-mode t)
@@ -81,18 +111,6 @@
 ;; Theme
 (load-theme 'monokai t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Functions (move them)                                                     ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank)
-)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key Bindings                                                              ;;
@@ -100,6 +118,9 @@
 ;; Undo is Ctrl+Z
 (global-unset-key "\C-z")
 (global-set-key "\C-z" 'undo)
+;; Ctrl+a is select all, not move-beggining-of-line
+(global-unset-key "\C-a")
+(global-set-key "\C-a" 'mark-whole-buffer)
 ;; Search is Ctrl+F
 (global-set-key (kbd "C-f") 'isearch-forward)
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
@@ -107,6 +128,23 @@
 (global-set-key (kbd "M-<f3>") 'mc/mark-all-like-this)
 ;; Duplicate line is C-d. By default C-d is delete char
 (global-set-key (kbd "C-d") 'duplicate-line)
+;; Ctrl+S saves current file. Not ISearch - disabled as the default doesnt bother me
+;; (global-unset-key "\C-s")
+;; (global-set-key (kbd "C-s") 'save-buffer)
+;; Ctrl+k deletes current line
+(global-unset-key "\C-k")
+(global-set-key (kbd "C-k") 'my-delete-line)
+;; Ctrl+backspace deletes backward word
+(global-unset-key (kbd "<C-backspace>") )
+(global-set-key (kbd "<C-backspace>") 'my-backward-delete-word)
+;; Ctrl+(shift)tab changes between tabs
+(global-set-key (kbd "<C-iso-lefttab>") 'tabbar-backward-tab)
+(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
+;; Ctrl+f4 - kill buffer
+(global-set-key (kbd "<C-f4>") 'kill-this-buffer)
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Arguable defaults                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

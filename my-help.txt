@@ -1,0 +1,4 @@
+pretty print xml
+----------------
+Select all.
+M-x sgml-pretty-print 

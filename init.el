@@ -1,17 +1,21 @@
 ;; TODO:
-;;
+
+;;; Commentary:
 ;; The first time you load this, use-package does not exist.
 ;; magit-ediff to resolve merge conflicts
 ;; ctrl+scroll should resize font
 ;; https://github.com/ScottyB/ac-js2 ??
 
+;;; Code:
 (load "~/.emacs.d/functions.el")
 
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize)
+(elpy-enable)
 
 ;;
 (use-package neotree :ensure t)

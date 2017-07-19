@@ -176,7 +176,6 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(global-linum-mode t)
- '(indent-tabs-mode t)
  '(inhibit-startup-screen t)
  '(js2-bounce-indent-p t))
 

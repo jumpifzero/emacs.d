@@ -152,6 +152,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Arguable defaults                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Do not generate backup files -
+;; http://emacsredux.com/blog/2013/05/09/keep-backup-and-auto-save-files-out-of-the-way/
+(setq make-backup-files nil)
+
 ;; auto revert mode - Refreshes files and non files if they changed on disk
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)

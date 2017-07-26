@@ -1,4 +1,6 @@
 ;; TODO:
+;; CtrlD changes what is in the copy/paste.
+;; CtrlD does not allow duplicating multiple lines
 
 ;;; Commentary:
 ;; The first time you load this, use-package does not exist.

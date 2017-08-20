@@ -184,6 +184,7 @@
  '(inhibit-startup-screen t)
  '(js-indent-level 4)
  '(js2-bounce-indent-p t)
+ '(python-indent-offset 4)
  '(tab-width 4))
 
 (custom-set-faces

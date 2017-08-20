@@ -172,8 +172,6 @@
 ;;
 (setq x-stretch-cursor t) ;makes cursor lager when over tabs
 (setq-default cursor-type 'bar)
-;; Tab width is 6. - You can see they are tabs but not that
-;; indented.
 (setq-default tab-width 4)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -184,9 +182,9 @@
  '(cua-mode t nil (cua-base))
  '(global-linum-mode t)
  '(inhibit-startup-screen t)
- '(js-indent-level 2)
+ '(js-indent-level 4)
  '(js2-bounce-indent-p t)
- '(tab-width 2))
+ '(tab-width 4))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

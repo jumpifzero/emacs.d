@@ -17,7 +17,6 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize)
-(elpy-enable)
 
 ;;
 (use-package neotree :ensure t)
@@ -72,7 +71,8 @@
 (setq ido-show-dot-for-dired t) ;; put . as first item
 (setq ido-use-filename-at-point t) ;; prefer filenames near point
 
-
+;; elpy
+(elpy-enable)
 
 ;; tabbar
 ;; Use only two groups for tabs - emacs and user

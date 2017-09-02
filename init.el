@@ -22,6 +22,10 @@
 (use-package neotree :ensure t)
 ;; (use-package tabbar :ensure t)
 (use-package drag-stuff :ensure t)
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 (use-package yasnippet :ensure t)
 (use-package js2-mode :ensure t)
 (use-package elpy :ensure t)

@@ -166,6 +166,9 @@
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)
 
+;; View column numbers
+(setq column-number-mode t)
+
 ;; Enable Predictive Abbreviation everywhere FIXME-This isnt working
 (pabbrev-mode)
 

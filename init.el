@@ -19,6 +19,10 @@
 (package-initialize)
 
 ;;
+(use-package autopair
+  :ensure t
+  :config
+  (autopair-global-mode))
 (use-package neotree :ensure t)
 ;; (use-package tabbar :ensure t)
 (use-package drag-stuff :ensure t)

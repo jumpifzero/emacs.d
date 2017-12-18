@@ -2,3 +2,14 @@ pretty print xml
 ----------------
 Select all.
 M-x sgml-pretty-print 
+
+
+
+elpy disable column indentation
+---------------------------------
+M-x highlight-indentation-mode
+
+
+TODO
+-------
+find and replace command pointing to M-% ...

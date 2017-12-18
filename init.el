@@ -23,6 +23,8 @@
   :ensure t
   :config
   (autopair-global-mode))
+(use-package company
+  :ensure t)
 (use-package neotree :ensure t)
 ;; (use-package tabbar :ensure t)
 (use-package drag-stuff :ensure t)
@@ -30,6 +32,10 @@
   :ensure t
   :config
   (editorconfig-mode 1))
+(use-package elm-mode
+  :ensure t)
+(use-package elm-oracle
+  :ensure t)
 (use-package yasnippet :ensure t)
 (use-package js2-mode :ensure t)
 (use-package elpy :ensure t)
@@ -43,9 +49,12 @@
   :init (setq markdown-command "pandoc"))
 (use-package multiple-cursors :ensure t)
 (use-package pabbrev :ensure t)
+(use-package realgud :ensure t)
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
+(use-package flycheck-elm
+  :ensure t)
 (use-package web-mode :ensure t)
 (use-package json-mode :ensure t)
 (use-package exec-path-from-shell :ensure t)
@@ -62,6 +71,12 @@
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
+
+;; elm
+(require 'elm-mode)
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-elm))
+(add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
 
 ;; NeoTree
 (require 'neotree)

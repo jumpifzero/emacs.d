@@ -17,6 +17,8 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize)
+(global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;;
 (use-package autopair
@@ -40,6 +42,8 @@
 (use-package js2-mode :ensure t)
 (use-package elpy :ensure t)
 (use-package monokai-theme :ensure t)
+;; ================================================================================
+;; Markdown
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -47,6 +51,9 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "pandoc"))
+;; spell check english words in markdown
+(add-hook 'markdown-mode-hook 'markdown-mode-hook-setup)
+
 (use-package multiple-cursors :ensure t)
 (use-package pabbrev :ensure t)
 (use-package realgud :ensure t)

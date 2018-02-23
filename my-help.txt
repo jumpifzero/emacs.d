@@ -13,3 +13,7 @@ M-x highlight-indentation-mode
 TODO
 -------
 find and replace command pointing to M-% ...
+On paste, format code.
+in jsmode, in a line with a comment // bla bla bla putting an enter needs to go to the next line, indent then insert //
+matching parenthesis highlight.
+Current keyword highlight

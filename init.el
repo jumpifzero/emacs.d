@@ -11,6 +11,8 @@
 ;;; Code:
 (load "~/.emacs.d/functions.el")
 
+
+;; Setup package sources
 (require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -32,21 +34,14 @@
   :ensure t
   :config
   (editorconfig-mode 1))
-(use-package elm-mode
-  :ensure t)
-(use-package elm-oracle
-  :ensure t)
+(use-package helm :ensure t)
+(use-package elm-mode :ensure t)
+(use-package elm-oracle :ensure t)
 (use-package yasnippet :ensure t)
 (use-package js2-mode :ensure t)
 (use-package elpy :ensure t)
 (use-package monokai-theme :ensure t)
-(use-package markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "pandoc"))
+(load "~/.emacs.d/markdown.el")
 (use-package multiple-cursors :ensure t)
 (use-package pabbrev :ensure t)
 (use-package realgud :ensure t)
@@ -55,9 +50,10 @@
   :init (global-flycheck-mode))
 (use-package flycheck-elm
   :ensure t)
-(use-package web-mode :ensure t)
+(load "~/.emacs.d/html.el")
 (use-package json-mode :ensure t)
 (use-package exec-path-from-shell :ensure t)
+
 ;(use-package simple-httpd :ensure t)
 ;(use-package skewer-mode :ensure t)
 ;(add-hook 'js2-mode-hook 'skewer-mode)

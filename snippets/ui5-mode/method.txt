@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: function inside object
+# key: m
+# --
+/**
+ * @param {object} ${arg}
+ * @returns {object}
+**/
+${1:name}: function (${2:arg}) {
+    $0
+}

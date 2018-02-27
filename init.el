@@ -19,6 +19,8 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (package-initialize)
+(global-company-mode)
+;(add-hook 'after-init-hook 'global-company-mode)
 
 ;;
 (use-package autopair
@@ -34,7 +36,7 @@
   :ensure t
   :config
   (editorconfig-mode 1))
-(use-package helm :ensure t)
+(load "~/.emacs.d/helm-config.el")
 (use-package elm-mode :ensure t)
 (use-package elm-oracle :ensure t)
 (use-package yasnippet :ensure t)

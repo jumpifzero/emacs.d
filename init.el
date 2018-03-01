@@ -80,6 +80,9 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+;; Dired
+(load "~/.emacs.d/dired-config.el")
+
 ;; Ido config
 (require 'ido)
 (setq ido-enable-tramp-completion t)
@@ -127,10 +130,10 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 ;; JAVASCRIPT
+(add-hook 'javascript-mode-hook 'show-paren-mode)
 ;; js2-mode (javascript editing)
 ;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;(add-to-list 'auto-mode-alist '("\\.js\\'" . pabbrev-mode))
-
 
 ;; Do not word wrap by default
 (setq-default truncate-lines 1)
@@ -204,7 +207,9 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(cua-mode t nil (cua-base))
+ '(dired-recursive-deletes (quote always))
  '(global-linum-mode t)
+ '(helm-command-prefix-key "C-;")
  '(inhibit-startup-screen t)
  '(js-indent-level 4)
  '(js2-bounce-indent-p t)

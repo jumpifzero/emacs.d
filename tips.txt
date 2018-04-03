@@ -8,4 +8,10 @@ Kill a line, move around, kill another line.
    If you like, you can try giving M-y positive and negative
    arguments.
 
-State of tutorial: UNDO
+# XML
+## Pretty print
+
+```
+M-x sgml-mode
+M-x sgml-pretty-print
+```

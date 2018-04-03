@@ -1,7 +1,10 @@
 ao fazer ctrl F o cursor tem de mudar para o minibuffer
 
+Ao mover um ecra, o scroll salta muitas linhas. REduzir este valor.
 
+Increase/Decrease font with C-+ and C--
 
+Change the tutorial to match the new keys.
 
 if you want indent current buffer
 

@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: ui5-row-data
-# key: ui5
-# --
-var oRouter = this.getRouter();
-var oSource = oEvent.getSource();
-var sBindingContextPath = oSource.getBindingContextPath();
-var oItemData = this.oView.getModel('MODEL').getProperty(sBindingContextPath);
-				
